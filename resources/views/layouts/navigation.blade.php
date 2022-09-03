@@ -13,14 +13,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/products">Product</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.create') }}">New product</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('products.create') }}">New product</a>
+                    </li>
+                @endauth
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('profile') }}">{{ auth()->user()->name }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                     </li>
                 @else
                     <li class="nav-item">
